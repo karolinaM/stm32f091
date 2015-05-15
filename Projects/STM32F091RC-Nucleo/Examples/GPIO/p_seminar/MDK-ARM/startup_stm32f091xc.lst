@@ -426,11 +426,11 @@ ARM Macro Assembler    Page 7
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0 --apcs=interw
 ork --depend=stm32f091rc-nucleo\startup_stm32f091xc.d -ostm32f091rc-nucleo\star
-tup_stm32f091xc.o -ID:\Programming\STM_Nucleo\STM32Cube_FW_F0_V1.2.0\Projects\S
-TM32F091RC-Nucleo\Examples\GPIO\p_seminar\MDK-ARM\RTE -IE:\Keil_v5\ARM\PACK\Kei
-l\STM32F0xx_DFP\1.4.0\Device\Include -IE:\Keil_v5\ARM\CMSIS\Include --predefine
-="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 514" --predefine="STM32F09
-1 SETA 1" --list=startup_stm32f091xc.lst startup_stm32f091xc.s
+tup_stm32f091xc.o -ID:\Programming\STM_Nucleo\STM32Cube_FW_F0_V1.2.0\stm32f091\
+Projects\STM32F091RC-Nucleo\Examples\GPIO\p_seminar\MDK-ARM\RTE -IE:\Keil_v5\AR
+M\PACK\Keil\STM32F0xx_DFP\1.4.0\Device\Include -IE:\Keil_v5\ARM\CMSIS\Include -
+-predefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 514" --predefine
+="STM32F091 SETA 1" --list=startup_stm32f091xc.lst startup_stm32f091xc.s
 
 
 
