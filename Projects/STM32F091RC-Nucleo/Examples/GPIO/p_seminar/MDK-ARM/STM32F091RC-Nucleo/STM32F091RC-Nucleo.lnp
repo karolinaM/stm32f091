@@ -14,6 +14,7 @@
 "stm32f091rc-nucleo\stm32f0xx_it.o"
 "stm32f091rc-nucleo\timer.o"
 "stm32f091rc-nucleo\gpio.o"
+"stm32f091rc-nucleo\bh1750fvi.o"
 --strict --scatter "STM32F091RC-Nucleo\STM32F091RC-Nucleo.sct"
 
 --diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
