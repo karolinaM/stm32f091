@@ -19,5 +19,7 @@ stm32f091rc-nucleo\stm32f0xx_hal_tim_ex.o: ..\..\..\..\..\..\Drivers\STM32F0xx_H
 stm32f091rc-nucleo\stm32f0xx_hal_tim_ex.o: ..\..\..\..\..\..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_cortex.h
 stm32f091rc-nucleo\stm32f0xx_hal_tim_ex.o: ..\..\..\..\..\..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_flash.h
 stm32f091rc-nucleo\stm32f0xx_hal_tim_ex.o: ..\..\..\..\..\..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_flash_ex.h
+stm32f091rc-nucleo\stm32f0xx_hal_tim_ex.o: ..\..\..\..\..\..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_i2c.h
+stm32f091rc-nucleo\stm32f0xx_hal_tim_ex.o: ..\..\..\..\..\..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_i2c_ex.h
 stm32f091rc-nucleo\stm32f0xx_hal_tim_ex.o: ..\..\..\..\..\..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_tim.h
 stm32f091rc-nucleo\stm32f0xx_hal_tim_ex.o: ..\..\..\..\..\..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_tim_ex.h

@@ -27,6 +27,9 @@
 #define CHANGE_MEASUREMENT_TIME_HIGH_BIT 0b01000000 // Change measurement time. Please refer "adjust measurement result for influence of optical window." Last three bits should be defined with or operator
 #define CHANGE_MASUREMENT_TIME_LOW_BIT   0b01100000 // Change measurement time. Please refer "adjust measurement result for influence of optical window." Last five bits should be define with or operator.
 
+/* Peripheral Control functions  **********************************************/
+	 
+	 
 #ifdef __cplusplus
 }
 #endif

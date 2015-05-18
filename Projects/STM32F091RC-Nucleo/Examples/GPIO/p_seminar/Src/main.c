@@ -34,6 +34,7 @@ static void Error_Handler(void);
 /* Global variables ----------------------------------------------------------*/
 int status = 0;
 extern TIM_HandleTypeDef TimHandle;
+extern I2C_HandleTypeDef I2cHandle;
 
 /**
   * @brief  Main program
@@ -66,7 +67,10 @@ int main(void)
 	TIM_Turn_On(&TimHandle);
 	TIM_Init(TIMx);		
 	TIM_Start(&TimHandle);
-  
+	
+	/* I2C init */
+	I2C_Init();
+ 
 
   /* Infinite loop */
   while (1){

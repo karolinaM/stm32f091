@@ -44,6 +44,7 @@
 #include "stm32f0xx_nucleo.h"
 #include "gpio.h"
 #include "timer.h"
+#include "i2c.h"
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
@@ -64,8 +65,35 @@
 #define TIMx_IRQn                      TIM2_IRQn
 #define TIMx_IRQHandler                TIM2_IRQHandler
 
+/* Definition for I2Cx clock resources */
+#define I2Cx                            I2C1
+#define RCC_PERIPHCLK_I2Cx              RCC_PERIPHCLK_I2C1
+#define RCC_I2CxCLKSOURCE_SYSCLK        RCC_I2C1CLKSOURCE_SYSCLK
+#define I2Cx_CLK_ENABLE()               __I2C1_CLK_ENABLE()
+#define I2Cx_SDA_GPIO_CLK_ENABLE()      __GPIOB_CLK_ENABLE()
+#define I2Cx_SCL_GPIO_CLK_ENABLE()      __GPIOB_CLK_ENABLE() 
+
+#define I2Cx_FORCE_RESET()              __I2C1_FORCE_RESET()
+#define I2Cx_RELEASE_RESET()            __I2C1_RELEASE_RESET()
+
+/* Definition for I2Cx Pins */
+#define I2Cx_SCL_PIN                    GPIO_PIN_6
+#define I2Cx_SCL_GPIO_PORT              GPIOB
+#define I2Cx_SDA_PIN                    GPIO_PIN_7
+#define I2Cx_SDA_GPIO_PORT              GPIOB
+#define I2Cx_SCL_SDA_AF                 GPIO_AF1_I2C1
+
+/* Definition for I2Cx's NVIC */
+#define I2Cx_IRQn                    I2C1_IRQn
+#define I2Cx_IRQHandler              I2C1_IRQHandler
+
+/* Size of Transmission buffer */
+#define TXBUFFERSIZE                      (COUNTOF(aTxBuffer) - 1)
+
 /* Exported functions ------------------------------------------------------- */
 
+/* Exported macro ------------------------------------------------------------*/
+#define COUNTOF(__BUFFER__)   (sizeof(__BUFFER__) / sizeof(*(__BUFFER__)))
 #endif /* __MAIN_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
