@@ -18,6 +18,7 @@
 "stm32f091rc-nucleo\gpio.o"
 "stm32f091rc-nucleo\i2c.o"
 "stm32f091rc-nucleo\bh1750fvi.o"
+"stm32f091rc-nucleo\am2303.o"
 --strict --scatter "STM32F091RC-Nucleo\STM32F091RC-Nucleo.sct"
 
 --diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols

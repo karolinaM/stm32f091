@@ -34,7 +34,7 @@ static void Error_Handler(void);
 /* Global variables ----------------------------------------------------------*/
 int status = 0;
 extern TIM_HandleTypeDef TimHandle;
-extern I2C_HandleTypeDef I2cHandle;
+extern TIM_HandleTypeDef TimHandleCnt;
 
 /**
   * @brief  Main program
@@ -44,6 +44,7 @@ extern I2C_HandleTypeDef I2cHandle;
 int main(void)
 {
 	uint32_t uwPrescalerValue = 0;
+	int tmp;
 	
   /* STM32F0xx HAL library initialization:
        - Configure the Flash prefetch
@@ -61,24 +62,22 @@ int main(void)
 	/* Configure GPIOA */
   __GPIOA_CLK_ENABLE();
   GPIO_Init_Output(LED_PORT, LED_PIN);
-	GPIO_Init_Input(BUTTON_PORT, BUTTON_PIN);
-
+//	GPIO_Init_Input(BUTTON_PORT, BUTTON_PIN);
+  
 	/* Timer config */
 	TIM_Turn_On(&TimHandle);
 	TIM_Init(TIMx);		
 	TIM_Start(&TimHandle);
-	
-	/* I2C init */
-	I2C_Init();
- 
 
   /* Infinite loop */
   while (1){
-		if(status % 2)
+		if(TIM_Cnt(&TimHandle)< 0x3C00){
 			GPIO_On(LED_PORT, LED_PIN);
-		else
+		}
+		else{
 			GPIO_Off(LED_PORT, LED_PIN);
-		
+		  TIM_Set_Zero(&TimHandle);
+		}
   }
 }
 

@@ -65,6 +65,13 @@
 #define TIMx_IRQn                      TIM2_IRQn
 #define TIMx_IRQHandler                TIM2_IRQHandler
 
+/* Definition for TIMx clock resources */
+#define TIMCnt                           TIM1
+#define TIMCnt_CLK_ENABLE()              __TIM1_CLK_ENABLE()	
+/* Definition for TIMx's NVIC */
+#define TIMCnt_IRQn                      TIM1_IRQn
+#define TIMCnt_IRQHandler                TIM1_IRQHandler
+
 /* Definition for I2Cx clock resources */
 #define I2Cx                            I2C1
 #define RCC_PERIPHCLK_I2Cx              RCC_PERIPHCLK_I2C1
@@ -84,8 +91,8 @@
 #define I2Cx_SCL_SDA_AF                 GPIO_AF1_I2C1
 
 /* Definition for I2Cx's NVIC */
-#define I2Cx_IRQn                    I2C1_IRQn
-#define I2Cx_IRQHandler              I2C1_IRQHandler
+#define I2Cx_IRQn                        I2C1_IRQn
+#define I2Cx_IRQHandler                  I2C1_IRQHandler
 
 /* Size of Transmission buffer */
 #define TXBUFFERSIZE                      (COUNTOF(aTxBuffer) - 1)
