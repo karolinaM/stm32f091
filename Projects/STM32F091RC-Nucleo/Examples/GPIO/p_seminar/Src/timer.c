@@ -32,19 +32,19 @@ void TIM_Init(TIM_TypeDef * timx)
 {
 	int uwPrescalerValue;
 
-  /* Compute the prescaler value to have TIMx counter clock equal to 10000 Hz */
-  uwPrescalerValue = (uint32_t)(SystemCoreClock / 10000) - 1;
+  /* Compute the prescaler value to have TIMx counter clock equal to 2MHz */
+  uwPrescalerValue = (uint32_t)(SystemCoreClock / 2000000) - 1;
 
   /* Set TIMx instance */
   TimHandle.Instance = TIMx;
 
   /* Initialize TIMx peripheral as follows:
-       + Period = 100000 - 1
+       + Period = 65536 - 1 ... biggest value in ARR register
        + Prescaler = (SystemCoreClock/10000) - 1
        + ClockDivision = 0
        + Counter direction = Up
   */
-  TimHandle.Init.Period            = 100000 - 1;
+  TimHandle.Init.Period            = 65536 - 1;
   TimHandle.Init.Prescaler         = uwPrescalerValue;
   TimHandle.Init.ClockDivision     = 0;
   TimHandle.Init.CounterMode       = TIM_COUNTERMODE_UP;
@@ -77,26 +77,28 @@ void TIM_Turn_On(TIM_HandleTypeDef *htim)
   HAL_NVIC_EnableIRQ(TIMx_IRQn);
 }
 
+/* Reads and return counter value. Counter is set for system clock 48MHz and 
+ * TIMx clock frequency 2MHz.
+*/
 int TIM_Cnt(TIM_HandleTypeDef *htim){
 	return __HAL_TIM_GetCounter(htim);
 }
 
+/* Sets counter to zero.
+*/
 void TIM_Set_Zero(TIM_HandleTypeDef *htim){
 	htim->Instance->CNT = 0;	
 }
 
-/*	Calculated for system clock: 48 MHz.
-*   So far it's not possible to count in us. Only 10, 20, 30, etc us. but not for example 22, 23 etc.
+/* Calculated for system clock: 48 MHz and TIMx clock frequency 2MHz.
 *
 */
 void TIM_Set_Value(TIM_HandleTypeDef *htim, int val, char us){
 	if(us == 1){
 		//
-		htim->Instance->ARR = val * 0.1 - 1;
+		htim->Instance->ARR = val * 2 - 1;
 	}
 	else if(us == 0){
-			htim->Instance->ARR = val * 10 - 1;	
-	}
-	
-	
+			htim->Instance->ARR = val * 2000 - 1;	
+	}	
 }

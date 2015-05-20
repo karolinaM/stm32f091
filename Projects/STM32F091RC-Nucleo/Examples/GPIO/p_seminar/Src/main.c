@@ -67,7 +67,7 @@ int main(void)
 	/* Timer config */
 	TIM_Turn_On(&TimHandle);
 	TIM_Init(TIMx);		
-	TIM_Set_Value(&TimHandle, 26, US);
+	TIM_Set_Value(&TimHandle, 26, MS);
 	TIM_Start(&TimHandle);
 
   /* Infinite loop */
