@@ -18,11 +18,12 @@
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
+#define MS	0
+#define US  1
 /* Exported functions ------------------------------------------------------- */
 void TIM_Init(TIM_TypeDef *timx);
-void TIM_Init_Cnt(TIM_TypeDef *timx);
 void TIM_Start(TIM_HandleTypeDef *htim);
 void TIM_Turn_On(TIM_HandleTypeDef *htim);
-void TIM_Turn_On_Cnt(TIM_HandleTypeDef *htim);
 void TIM_Set_Zero(TIM_HandleTypeDef *htim);
 int  TIM_Cnt(TIM_HandleTypeDef *htim);
+void TIM_Set_Value(TIM_HandleTypeDef *htim, int val_ms, char us);

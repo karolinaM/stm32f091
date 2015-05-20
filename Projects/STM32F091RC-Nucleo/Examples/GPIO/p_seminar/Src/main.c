@@ -67,16 +67,27 @@ int main(void)
 	/* Timer config */
 	TIM_Turn_On(&TimHandle);
 	TIM_Init(TIMx);		
+	TIM_Set_Value(&TimHandle, 26, US);
 	TIM_Start(&TimHandle);
 
   /* Infinite loop */
   while (1){
+		/*
 		if(TIM_Cnt(&TimHandle)< 0x3C00){
 			GPIO_On(LED_PORT, LED_PIN);
 		}
 		else{
 			GPIO_Off(LED_PORT, LED_PIN);
 		  TIM_Set_Zero(&TimHandle);
+		}
+  }
+		*/
+		if(status % 2){
+			GPIO_On(LED_PORT, LED_PIN);
+		}
+		else{
+			GPIO_Off(LED_PORT, LED_PIN);
+		  //TIM_Set_Zero(&TimHandle);
 		}
   }
 }

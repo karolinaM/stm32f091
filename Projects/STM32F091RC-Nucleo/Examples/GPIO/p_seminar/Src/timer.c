@@ -23,7 +23,8 @@ TIM_HandleTypeDef TimHandle;
 TIM_HandleTypeDef TimHandleCnt;
 
 /**
-  * @brief Initializes timer for counting until some value
+  * @brief Initializes timer for counting until 10s, than interrupt occurs if 
+	*				 enabled by TIM_Turn_On()
   * @param timx: 
   * @retval 
   */
@@ -38,37 +39,12 @@ void TIM_Init(TIM_TypeDef * timx)
   TimHandle.Instance = TIMx;
 
   /* Initialize TIMx peripheral as follows:
-       + Period = 10000 - 1
+       + Period = 100000 - 1
        + Prescaler = (SystemCoreClock/10000) - 1
        + ClockDivision = 0
        + Counter direction = Up
   */
-  TimHandle.Init.Period            = 20000 - 1;
-  TimHandle.Init.Prescaler         = uwPrescalerValue;
-  TimHandle.Init.ClockDivision     = 0;
-  TimHandle.Init.CounterMode       = TIM_COUNTERMODE_UP;
-  TimHandle.Init.RepetitionCounter = 0;
-  HAL_TIM_Base_Init(&TimHandle);
-		
-}
-
-void TIM_Init_Cnt(TIM_TypeDef * timx)
-{
-	int uwPrescalerValue;
-
-  /* Compute the prescaler value to have TIMx counter clock equal to 10000 Hz */
-  uwPrescalerValue = (uint32_t)(SystemCoreClock / 10000) - 1;
-
-  /* Set TIMx instance */
-  TimHandle.Instance = TIMCnt;
-
-  /* Initialize TIMx peripheral as follows:
-       + Period = 10000 - 1
-       + Prescaler = (SystemCoreClock/10000) - 1
-       + ClockDivision = 0
-       + Counter direction = Up
-  */
-  TimHandle.Init.Period            = 20000 - 1;
+  TimHandle.Init.Period            = 100000 - 1;
   TimHandle.Init.Prescaler         = uwPrescalerValue;
   TimHandle.Init.ClockDivision     = 0;
   TimHandle.Init.CounterMode       = TIM_COUNTERMODE_UP;
@@ -101,24 +77,26 @@ void TIM_Turn_On(TIM_HandleTypeDef *htim)
   HAL_NVIC_EnableIRQ(TIMx_IRQn);
 }
 
-void TIM_Turn_On_Cnt(TIM_HandleTypeDef *htim)
-{
-	/*##-1- Enable peripherals and GPIO Clocks #################################*/
-  /* TIMx Peripheral clock enable */
-  TIMCnt_CLK_ENABLE();
-	
-	/*##-2- Configure the NVIC for TIMx ########################################*/
-  /* Set the TIMx priority */
-  HAL_NVIC_SetPriority(TIMx_IRQn, 3, 0);
-
-  /* Enable the TIMx global Interrupt */
-  HAL_NVIC_EnableIRQ(TIMx_IRQn);
-}
-
 int TIM_Cnt(TIM_HandleTypeDef *htim){
 	return __HAL_TIM_GetCounter(htim);
 }
 
 void TIM_Set_Zero(TIM_HandleTypeDef *htim){
 	htim->Instance->CNT = 0;	
+}
+
+/*	Calculated for system clock: 48 MHz.
+*   So far it's not possible to count in us. Only 10, 20, 30, etc us. but not for example 22, 23 etc.
+*
+*/
+void TIM_Set_Value(TIM_HandleTypeDef *htim, int val, char us){
+	if(us == 1){
+		//
+		htim->Instance->ARR = val * 0.1 - 1;
+	}
+	else if(us == 0){
+			htim->Instance->ARR = val * 10 - 1;	
+	}
+	
+	
 }
