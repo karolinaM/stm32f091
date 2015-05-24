@@ -75,7 +75,7 @@ int main(void)
 
   while (1){
 		AM2303_Measure(AM2303_PORT, AM2303_PIN);
-		for(int i = 0; i < 100; ++i);
+		for(int i = 0; i < 10000; ++i);
   }
 		
 	

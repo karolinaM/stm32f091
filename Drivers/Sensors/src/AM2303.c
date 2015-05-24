@@ -30,11 +30,12 @@ void AM2303_Init(GPIO_TypeDef  *GPIOx, uint16_t GPIO_Pin){
 */
 void AM2303_Measure(GPIO_TypeDef  *GPIOx, uint16_t GPIO_Pin){	
 	// set counter for 18ms
-	TIM_Set_Value(&TimHandle, 18, MS);
+	TIM_Set_Value(&TimHandle, 500, US);
 	GPIO_Off(GPIOx, GPIO_Pin);
 	TIM_Start(&TimHandle);
 	while(TIM_Status == 0);		
 	GPIO_On(GPIOx, GPIO_Pin);
+	for(int i = 0; i < 100; ++i); // there has to be delay, otherwise low state would be 2us
 	TIM_Status = 0;
 	
 	// init pin as input
