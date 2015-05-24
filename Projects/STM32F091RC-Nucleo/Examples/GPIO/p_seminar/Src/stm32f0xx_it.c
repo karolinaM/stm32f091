@@ -58,6 +58,7 @@
 /* Private functions ---------------------------------------------------------*/
 /* Global variables */
 extern int status;
+extern int TIM_Status;
 extern TIM_HandleTypeDef TimHandle;
 /******************************************************************************/
 /*            Cortex-M0 Processor Exceptions Handlers                         */
@@ -136,9 +137,10 @@ void EXTI0_1_IRQHandler(void)
 /**
   * @}
   */
-void TIMx_IRQHandler(void)
-{
-	++status;
+void TIMx_IRQHandler(void){
+	TIM_Stop(&TimHandle);
+	TIM_Status = 1;	
+	TIM_Set_Zero(&TimHandle);
   HAL_TIM_IRQHandler(&TimHandle);
 }
 

@@ -581,6 +581,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\..\Drivers\Sensors\src\BH1750FVI.c</FilePath>
             </File>
+            <File>
+              <FileName>AM2303.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\Sensors\src\AM2303.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

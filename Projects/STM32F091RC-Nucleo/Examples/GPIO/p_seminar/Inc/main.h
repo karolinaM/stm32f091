@@ -44,18 +44,26 @@
 #include "stm32f0xx_nucleo.h"
 #include "gpio.h"
 #include "timer.h"
+#include "AM2303.h"
 #include "i2c.h"
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Definition for GPIO Output */
+#define LED_CLK_ENABLE()							 __GPIOA_CLK_ENABLE()
 #define LED_PORT 											 GPIOA
 #define LED_PIN												 GPIO_PIN_1
 /* Definition for GPIO Input */
 #define BUTTON_PORT 									 GPIOA
 #define BUTTON_PIN										 GPIO_PIN_0
 #define BUTTON_IRQn										 EXTI0_1_IRQn
+
+/* Definition for AM2303 (temperature and humidity) sensor */
+#define AM2303_CLK_ENABLE() 					 __GPIOA_CLK_ENABLE()
+#define AM2303_PORT 									 GPIOA
+#define AM2303_PIN										 GPIO_PIN_1
+#define AM2303_IRQn										 EXTI0_1_IRQn
 
 
 /* Definition for TIMx clock resources */

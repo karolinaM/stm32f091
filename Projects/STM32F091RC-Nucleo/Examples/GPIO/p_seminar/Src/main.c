@@ -33,8 +33,8 @@ static void Error_Handler(void);
 /* Private functions ---------------------------------------------------------*/
 /* Global variables ----------------------------------------------------------*/
 int status = 0;
+int TIM_Status = 0;
 extern TIM_HandleTypeDef TimHandle;
-extern TIM_HandleTypeDef TimHandleCnt;
 
 /**
   * @brief  Main program
@@ -60,18 +60,25 @@ int main(void)
   /* Configure the system clock to 48 MHz */
   SystemClock_Config();
 	/* Configure GPIOA */
-  __GPIOA_CLK_ENABLE();
+  LED_CLK_ENABLE();
   GPIO_Init_Output(LED_PORT, LED_PIN);
 //	GPIO_Init_Input(BUTTON_PORT, BUTTON_PIN);
+	
+//	AM2303_Measure(AM2303_PORT, AM2303_PIN);
   
 	/* Timer config */
 	TIM_Turn_On(&TimHandle);
-	TIM_Init(TIMx);		
-	TIM_Set_Value(&TimHandle, 26, MS);
-	TIM_Start(&TimHandle);
+	TIM_Init(TIMx);
+//	TIM_Start(&TimHandle);
+
+	/* Configure Sensor and measure temperature and humidity */
+	AM2303_CLK_ENABLE();
+	AM2303_Init(AM2303_PORT, AM2303_PIN);
 
   /* Infinite loop */
   while (1){
+		AM2303_Measure(AM2303_PORT, AM2303_PIN);
+		for(int i = 0; i < 100; ++i);
 		/*
 		if(TIM_Cnt(&TimHandle)< 0x3C00){
 			GPIO_On(LED_PORT, LED_PIN);
@@ -81,7 +88,7 @@ int main(void)
 		  TIM_Set_Zero(&TimHandle);
 		}
   }
-		*/
+		
 		if(status % 2){
 			GPIO_On(LED_PORT, LED_PIN);
 		}
@@ -89,7 +96,10 @@ int main(void)
 			GPIO_Off(LED_PORT, LED_PIN);
 		  //TIM_Set_Zero(&TimHandle);
 		}
+		*/
   }
+		
+	
 }
 
 /**

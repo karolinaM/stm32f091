@@ -4,14 +4,13 @@
   * @author  Karolina Majstrovic
   * @version 
   * @date    09-May-2015
-  * @brief   Delay function.
+  * @brief   Delay function. aaaaaaaaaaaaaaaa
   ******************************************************************************
   ******************************************************************************
   */
 
 /* Includes ------------------------------------------------------------------*/
 #include "timer.h"
-#include "main.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -23,7 +22,7 @@ TIM_HandleTypeDef TimHandle;
 TIM_HandleTypeDef TimHandleCnt;
 
 /**
-  * @brief Initializes timer for counting until 10s, than interrupt occurs if 
+  * @brief Initializes timer for counting until 32ms, than interrupt occurs if 
 	*				 enabled by TIM_Turn_On()
   * @param timx: 
   * @retval 
@@ -58,9 +57,14 @@ void TIM_Init(TIM_TypeDef * timx)
   * @param htim: tim handler
   * @retval none
   */
-void TIM_Start(TIM_HandleTypeDef *htim)
-{
+void TIM_Start(TIM_HandleTypeDef *htim){
+	htim->Instance->CR1 |= TIM_CR1_CEN;
 	HAL_TIM_Base_Start_IT(htim);
+}
+
+void TIM_Stop(TIM_HandleTypeDef *htim){
+	htim->Instance->CR1 &= ~TIM_CR1_CEN;
+	HAL_TIM_Base_Stop(htim);
 }
 
 void TIM_Turn_On(TIM_HandleTypeDef *htim)
@@ -94,11 +98,11 @@ void TIM_Set_Zero(TIM_HandleTypeDef *htim){
 *
 */
 void TIM_Set_Value(TIM_HandleTypeDef *htim, int val, char us){
-	if(us == 1){
+	if(us == US){
 		//
 		htim->Instance->ARR = val * 2 - 1;
 	}
-	else if(us == 0){
+	else if(us == MS){
 			htim->Instance->ARR = val * 2000 - 1;	
 	}	
 }

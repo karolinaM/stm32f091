@@ -28,5 +28,7 @@ stm32f091rc-nucleo\stm32f0xx_it.o: ..\..\..\..\..\..\Drivers\BSP\STM32F0xx-Nucle
 stm32f091rc-nucleo\stm32f0xx_it.o: ..\Inc\gpio.h
 stm32f091rc-nucleo\stm32f0xx_it.o: ..\Inc\timer.h
 stm32f091rc-nucleo\stm32f0xx_it.o: ..\Inc\main.h
+stm32f091rc-nucleo\stm32f0xx_it.o: ..\..\..\..\..\..\Drivers\Sensors\inc\AM2303.h
+stm32f091rc-nucleo\stm32f0xx_it.o: ..\Inc\gpio.h
 stm32f091rc-nucleo\stm32f0xx_it.o: ..\Inc\i2c.h
 stm32f091rc-nucleo\stm32f0xx_it.o: ..\Inc\stm32f0xx_it.h

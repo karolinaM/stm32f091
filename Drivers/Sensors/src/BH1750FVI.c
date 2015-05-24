@@ -4,7 +4,7 @@
   * @author  Karolina Majstrovic
   * @version 
   * @date    09-May-2015
-  * @brief   Functions for BH1750FVI sensor.
+  * @brief   Functions for BH1750FVI (light) sensor.
   ******************************************************************************
   ******************************************************************************
   */
