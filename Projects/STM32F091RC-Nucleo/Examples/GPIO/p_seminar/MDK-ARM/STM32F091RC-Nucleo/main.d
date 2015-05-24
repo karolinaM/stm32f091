@@ -29,5 +29,6 @@ stm32f091rc-nucleo\main.o: ..\Inc\gpio.h
 stm32f091rc-nucleo\main.o: ..\Inc\timer.h
 stm32f091rc-nucleo\main.o: ..\Inc\main.h
 stm32f091rc-nucleo\main.o: ..\..\..\..\..\..\Drivers\Sensors\inc\AM2303.h
+stm32f091rc-nucleo\main.o: ..\Inc\stm32f0xx_it.h
 stm32f091rc-nucleo\main.o: ..\Inc\gpio.h
 stm32f091rc-nucleo\main.o: ..\Inc\i2c.h

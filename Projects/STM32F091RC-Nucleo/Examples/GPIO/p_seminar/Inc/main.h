@@ -48,6 +48,7 @@
 #include "i2c.h"
 
 /* Exported types ------------------------------------------------------------*/
+extern volatile int TIM_Status;
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Definition for GPIO Output */

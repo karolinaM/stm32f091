@@ -25,6 +25,7 @@ stm32f091rc-nucleo\am2303.o: ..\..\..\..\..\..\Drivers\STM32F0xx_HAL_Driver\Inc\
 stm32f091rc-nucleo\am2303.o: ..\..\..\..\..\..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_tim.h
 stm32f091rc-nucleo\am2303.o: ..\..\..\..\..\..\Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_tim_ex.h
 stm32f091rc-nucleo\am2303.o: ..\..\..\..\..\..\Drivers\BSP\STM32F0xx-Nucleo\stm32f0xx_nucleo.h
+stm32f091rc-nucleo\am2303.o: ..\Inc\stm32f0xx_it.h
 stm32f091rc-nucleo\am2303.o: ..\Inc\gpio.h
 stm32f091rc-nucleo\am2303.o: ..\Inc\main.h
 stm32f091rc-nucleo\am2303.o: ..\Inc\gpio.h

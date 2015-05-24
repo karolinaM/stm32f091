@@ -14,6 +14,7 @@
 #include "stm32f091xc.h"
 #include "stm32f0xx_hal.h"
 #include "stm32f0xx_nucleo.h"
+#include "stm32f0xx_it.h"
 #include "gpio.h"
 #include "main.h"
 /* Exported types ------------------------------------------------------------*/

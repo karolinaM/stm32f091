@@ -33,7 +33,6 @@ static void Error_Handler(void);
 /* Private functions ---------------------------------------------------------*/
 /* Global variables ----------------------------------------------------------*/
 int status = 0;
-int TIM_Status = 0;
 extern TIM_HandleTypeDef TimHandle;
 
 /**
@@ -62,41 +61,21 @@ int main(void)
 	/* Configure GPIOA */
   LED_CLK_ENABLE();
   GPIO_Init_Output(LED_PORT, LED_PIN);
-//	GPIO_Init_Input(BUTTON_PORT, BUTTON_PIN);
+  GPIO_On(LED_PORT, LED_PIN);
 	
-//	AM2303_Measure(AM2303_PORT, AM2303_PIN);
-  
 	/* Timer config */
 	TIM_Turn_On(&TimHandle);
 	TIM_Init(TIMx);
-//	TIM_Start(&TimHandle);
+	TIM_Status = 0;	
 
 	/* Configure Sensor and measure temperature and humidity */
 	AM2303_CLK_ENABLE();
 	AM2303_Init(AM2303_PORT, AM2303_PIN);
 
-  /* Infinite loop */
+
   while (1){
 		AM2303_Measure(AM2303_PORT, AM2303_PIN);
 		for(int i = 0; i < 100; ++i);
-		/*
-		if(TIM_Cnt(&TimHandle)< 0x3C00){
-			GPIO_On(LED_PORT, LED_PIN);
-		}
-		else{
-			GPIO_Off(LED_PORT, LED_PIN);
-		  TIM_Set_Zero(&TimHandle);
-		}
-  }
-		
-		if(status % 2){
-			GPIO_On(LED_PORT, LED_PIN);
-		}
-		else{
-			GPIO_Off(LED_PORT, LED_PIN);
-		  //TIM_Set_Zero(&TimHandle);
-		}
-		*/
   }
 		
 	

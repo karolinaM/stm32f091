@@ -41,7 +41,6 @@
 #include "main.h"
 #include "stm32f0xx_it.h"
 
-
 /** @addtogroup STM32F0xx_HAL_Examples
   * @{
   */
@@ -58,7 +57,7 @@
 /* Private functions ---------------------------------------------------------*/
 /* Global variables */
 extern int status;
-extern int TIM_Status;
+extern volatile int TIM_Status;
 extern TIM_HandleTypeDef TimHandle;
 /******************************************************************************/
 /*            Cortex-M0 Processor Exceptions Handlers                         */

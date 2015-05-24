@@ -17,7 +17,7 @@
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 extern TIM_HandleTypeDef TimHandle;
-extern int TIM_Status;
+volatile int TIM_Status = 0;
 /* Private functions ---------------------------------------------------------*/
 
 void AM2303_Init(GPIO_TypeDef  *GPIOx, uint16_t GPIO_Pin){
@@ -36,6 +36,7 @@ void AM2303_Measure(GPIO_TypeDef  *GPIOx, uint16_t GPIO_Pin){
 	while(TIM_Status == 0);		
 	GPIO_On(GPIOx, GPIO_Pin);
 	TIM_Status = 0;
+	
 	// init pin as input
 	
 	// receive states

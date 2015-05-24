@@ -4,7 +4,7 @@
   * @author  Karolina Majstrovic
   * @version 
   * @date    09-May-2015
-  * @brief   Delay function. aaaaaaaaaaaaaaaa
+  * @brief   Delay function.
   ******************************************************************************
   ******************************************************************************
   */
