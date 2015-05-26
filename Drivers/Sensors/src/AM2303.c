@@ -39,8 +39,14 @@ void AM2303_Measure(GPIO_TypeDef  *GPIOx, uint16_t GPIO_Pin){
 	TIM_Status = 0;
 	
 	// init pin as input
-	
+	GPIO_Init_Input(GPIOx, GPIO_Pin);
+	TIM_Set_Value(&TimHandle, 30, US);
+	TIM_Start(&TimHandle);
+	while(TIM_Status == 0);
+	TIM_Status = 0;
 	// receive states
 	
+	GPIO_Init_Output(GPIOx, GPIO_Pin);
+	GPIO_On(GPIOx, GPIO_Pin);
 }
 	
